@@ -1,0 +1,40 @@
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement , increment } from '@/INFRA/REDUX/actions/counterSlice'
+import reactLogo from '@/ASSETS/IMAGES/react.svg'
+import { Template } from './style'
+
+
+function Home() {
+  const count = useSelector(state => state.counter.value)
+  const dispatch = useDispatch()
+
+  return (
+    <Template className="App">
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => dispatch(increment())}>
+          count is {count}
+        </button>
+        <button onClick={() => dispatch(decrement())}>
+          -
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </Template>
+  )
+}
+
+export default Home
